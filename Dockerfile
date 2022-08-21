@@ -27,9 +27,11 @@ WORKDIR /src
 COPY requirements.txt .
 RUN pip3 install --default-timeout=10 --no-cache-dir -r requirements.txt
 
-WORKDIR /src/MatplotlibWithCpp
+# run cmake build and set WORKDIR to the build folder
+RUN mkdir -p /src/MatplotlibWithCpp/build
+COPY . /src/MatplotlibWithCpp/
+RUN cd /src/MatplotlibWithCpp/build && cmake .. && cmake --build .
+WORKDIR /src/MatplotlibWithCpp/build
 
 # REFERENCE: https://unix.stackexchange.com/questions/230238/x-applications-warn-couldnt-connect-to-accessibility-bus-on-stderr
 ENV NO_AT_BRIDGE=1
-
-CMD ["bash"]

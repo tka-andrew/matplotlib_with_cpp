@@ -12,10 +12,10 @@ This is just a minimal docker image for using matplotlib with cpp
 ./runDockerImage.sh
 ```
 
-### Compiling the cpp file using gcc
-```
-
-```
+## Side notes
+1. You may also use the matplotlibcpp.h straight away without adding the matplotlib-cpp as submodule, but remember to declare the license.
+2. You may also comopile it without using cmake. For this, please refer to the README.md of official repo below.
 
 ## Reference
-1. [Matplotlib for C++](https://matplotlib-cpp.readthedocs.io/en/latest/examples.html)
+1. [Matplotlib-cpp GitHub repo](https://github.com/lava/matplotlib-cpp)
+2. [A short documentation for basic usage](https://readthedocs.org/projects/matplotlib-cpp/downloads/pdf/latest/)

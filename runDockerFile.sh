@@ -6,8 +6,7 @@ touch $XAUTH
 xauth nlist $DISPLAY | sed -e 's/^..../ffff/' | xauth -f $XAUTH nmerge -
 PULSE_SERVER=unix:${XDG_RUNTIME_DIR}/pulse/native
 
-# You need to bind your volume to the docker container, so that the files can be saved to your host machine
-# REFERENCE: https://stackoverflow.com/questions/31046522/docker-save-file
+# since we did cmake --build in the docker file and we already set WORKDIR to the build folder, we can straight away run the excutable
 sudo docker run --rm -it -e DISPLAY=$DISPLAY -v $XSOCK:$XSOCK -v $XAUTH:$XAUTH \
-                --volume="${PWD}:/src/MatplotlibWithCpp/" \
-                -e XAUTHORITY=$XAUTH -t tka-andrew/matplotlib-with-cpp:latest
+                -e XAUTHORITY=$XAUTH -t tka-andrew/matplotlib-with-cpp:latest \
+                bash -c "./MatplotlibWithCppExample"
